@@ -22,5 +22,3 @@ Com a necessidade em organizar grandes conjuntos de dados, o Map&MEC surge como 
 3️⃣ Download dos Dados Processados: Após o processamento, o usuário poderá baixar o arquivo em formato Excel, que estará pronto para ser utilizado em outros sistemas ou para análise.
 
 Convidamos você a explorar o Map&MEC e descobrir como podemos auxiliar em suas necessidades analíticas. 🌟
-
-

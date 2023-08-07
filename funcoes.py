@@ -49,7 +49,7 @@ def convert_vinculo(value):
     elif value == "CONTR.PROF.VISITANTE":
         return "Visitante"
     else:
-        return "Aposentado"  # Retorne o valor original se não corresponder a nenhuma das condições
+        return "Não tem vínculo ativo"  # Retorne o valor original se não corresponder a nenhuma das condições
 
 def convert_titulacao(value):
     if value == 'DOUTORADO(T)' or value == 'DOUTORADO':
@@ -61,7 +61,7 @@ def convert_titulacao(value):
     elif value == 'ENSINO SUPERIOR' or value == 'GRADUACAO (NIVEL SUPERIOR COMPLETO)(T)':
         return "Graduação"
     else:
-        return "Aposentado"
+        return "Não encontrado"
 
 def convert_regime(value):
     if value == 'Dedc exclus':
@@ -71,7 +71,7 @@ def convert_regime(value):
     elif value == '20 h sem':
         return "20h"
     else:
-        return "Aposentado"
+        return "Não encontrado"
 
 
 def get_data(serv_ativos, docente):
@@ -86,7 +86,7 @@ def get_data(serv_ativos, docente):
         formatted_date = date_obj.strftime('%d/%m/%Y')
         return formatted_date
     else:
-        return 'Aposentado'
+        return 'Não encontrado'
 
 def generate_disciplinas(docentes, docente):
     mask = docentes['nome'] == docente
@@ -137,6 +137,7 @@ def process_file(uploaded_file):
     df['CPF'] = [get_value_from_siga(siga_3anos, docente, 'documento') for docente in docentes_3anos]
     df['lattes'] = [get_value_from_siga(siga_3anos, docente, 'curriculoLattes') for docente in docentes_3anos]
     df['E-mail'] = [get_value_from_siga(siga_3anos, docente, 'email') for docente in docentes_3anos]
+    df['E-mail Institucional'] = [get_value_from_siga(siga_3anos, docente, 'emailInstitucional') for docente in docentes_3anos]
     df['TITULAÇÃO MÁXIMA'] = [convert_titulacao(get_value_from_progepe(progepe, docente, 'ESCOLARIDADE')) for docente in docentes_3anos]
     df['REGIME DE TRABALHO UFPR'] = [convert_regime(get_value_from_progepe(progepe, docente, 'JORNADA TRABALHO')) for docente in docentes_3anos]
     df['DISCIPLINAS QUE LECIONA/LECIONOU'] = [generate_disciplinas(siga_3anos, docente) for docente in docentes_3anos]
@@ -215,3 +216,4 @@ def show_tutorial():
     image2 = st.image("IMAGEM/parte02.png", use_column_width=True)
 
     st.write("Após seguir todos os passos, você deverá ter um arquivo CSV pronto para ser carregado na aplicação!")
+    st.write("Volte em \"Processador de Dados\" e carregue o arquivo CSV!")

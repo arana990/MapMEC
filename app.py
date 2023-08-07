@@ -20,7 +20,7 @@ from funcoes import *  # Garantir que funcoes.py esteja no mesmo diretório ou n
 
 # Layout principal do aplicativo
 st.sidebar.title("Menu")
-selected_option = st.sidebar.radio("Selecione uma opção:", ["Processador de Dados", "Tutorial"])
+selected_option = st.sidebar.radio("Selecione uma opção:", ["Processador de Dados", "Tutorial download SIGA"])
 
 st.sidebar.markdown("###### Atenção, após baixar o arquivo observe que nem todas as informação estão completas.")
 st.sidebar.markdown("###### Esta aplicação ainda esta em desenvolvimento e pode ser melhorada. Se você puder contrubuir, entre em contato: arana@ufpr.br")
@@ -32,10 +32,10 @@ if selected_option == "Processador de Dados":
     st.write("Bem-vindo(a) à aplicação de processamento de dados dos docentes!")
     st.write("Esta ferramenta foi projetada para facilitar a organização e consolidação dos dados dos docentes da UFPR, extraídos do SIGA e da PROGEPE.")
     # Introdução
-    st.subheader("Funcionalidades")
-    st.write("1️⃣ Upload de Dados do SIGA: Os usuários podem fazer upload de um arquivo CSV com dados dos docentes extraídos diretamente do SIGA. ")
-    st.write("2️⃣ Processamento de Dados: A aplicação processará automaticamente os dados, fazendo comparações, removendo duplicatas e estruturando-os conforme os padrões da planilha do INEP.")
-    st.write("3️⃣ Download dos Dados Processados: Após o processamento, o usuário poderá baixar o arquivo em formato Excel, que estará pronto para ser utilizado em outros sistemas ou para análise.")
+    st.subheader("Siga as instruções para utilizar a aplicação")
+    st.write("1️⃣ Faça o download dos dados do SIGA: Os usuários devem fazer upload de um arquivo CSV com dados dos docentes extraídos diretamente do SIGA. Veja o tutorial no Menu \"Tutorial download SIGA\"")
+    st.write("2️⃣ Faça o upload dos dados do SIGA em \"Processador de Dados\": A aplicação processará automaticamente os dados, fazendo comparações, removendo duplicatas e estruturando-os conforme os padrões da planilha do INEP.")
+    st.write("3️⃣ Faça o download dos Dados Processados: Após o processamento, o usuário poderá baixar o arquivo em formato Excel, que estará pronto para ser utilizado em outros sistemas ou para análise.")
 
     uploaded_file = st.file_uploader("👉Carregue o arquivo CSV com os dados dos docentes extraídos do SIGA.", type="csv")
     st.write("🚨Lembre-se de adicionar todas as colunas.")
